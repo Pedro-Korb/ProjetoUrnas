@@ -1,0 +1,57 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+
+Cidadao --> Urna : "vota em"
+Urna o-- GraficoVotos : "gera dados para"
+Candidatos <|-- PessoaPolitica
+PessoaPolitica <|-- CandidatoPresidente
+PessoaPolitica <|-- CandidatoGovernador
+
+
+abstract class Candidatos {
+    + nome : String
+    + partido : String
+    + numero : int
+    + validarCandidato(): boolean
+}
+
+class PessoaPolitica {
+    + coligacao : String
+}
+
+class CandidatoPresidente {
+    + planoGoverno : String
+}
+
+class CandidatoGovernador {
+    + estadoRepresentado : String
+}
+
+abstract class PessoaCadastro {
+    + nome : String
+    + cpf : String
+    + dataNascimento : Date
+}
+
+PessoaCadastro <|-- Cidadao
+
+class Cidadao {
+    + secaoEleitoral : int
+    + cadastrar() : void
+}
+
+class Urna {
+    + idUrna : int
+    + votosValidos : int
+    + votosNulos : int
+    + votosBrancos : int
+    + registrarVoto(candidato: Candidatos) : void
+}
+
+class GraficoVotos {
+    + gerarGrafico(votos: HashMap<Candidatos, int>) : void
+}
+
+@enduml
