@@ -1,57 +1,59 @@
 @startuml
-
 skinparam classAttributeIconSize 0
+skinparam layoutDirection bottomToUp
 
+Pessoa "1" <-- "1" CidadaoVotante
+Pessoa "1" <-- "1" Candidato
+Candidato "1" <-- "1" CandidatoPresidencia
+Candidato "1" <-- "1" CandidatoGovernador
 
-Cidadao --> Urna : "vota em"
-Urna o-- GraficoVotos : "gera dados para"
-Candidatos <|-- PessoaPolitica
-PessoaPolitica <|-- CandidatoPresidente
-PessoaPolitica <|-- CandidatoGovernador
+CidadaoVotante "1" --* "1..*" Votacao : "participa de"
+CandidatoPresidencia "1" --* "1" Partido : "pertence a"
+CandidatoGovernador "1" --* "1" Partido : "pertence a"
+Votacao "1" --* "1" CandidatoPresidencia : "voto para"
+Votacao "1" -right-* "1" CandidatoGovernador : "voto para"
 
-
-abstract class Candidatos {
-    + nome : String
-    + partido : String
-    + numero : int
-    + validarCandidato(): boolean
+Class Pessoa {
+ - nome : String
+ - dataNascimento : Date
+ - cpf : int
+ - sexo : char
 }
 
-class PessoaPolitica {
-    + coligacao : String
+Class CidadaoVotante {
+ - estado : String
+ - numeroTitulo : int
+ - secaoEleitoral : int
+ - zonaEleitoral : int
+
+ + CidadaoVotante (atributos da classe : constructor)
 }
 
-class CandidatoPresidente {
-    + planoGoverno : String
+Class Candidato {
+ - numero : int
+ - apelido : String
 }
 
-class CandidatoGovernador {
-    + estadoRepresentado : String
+Class Partido {
+ - numero : int
+ - nomePartido : String
+ - siglaPartido : String
 }
 
-abstract class PessoaCadastro {
-    + nome : String
-    + cpf : String
-    + dataNascimento : Date
+Class CandidatoPresidencia {
+ - vicePresidente : String
+ - planoGoverno : String
 }
 
-PessoaCadastro <|-- Cidadao
-
-class Cidadao {
-    + secaoEleitoral : int
-    + cadastrar() : void
+Class CandidatoGovernador {
+ - viceGovernador : String
+ - planoGoverno : String
 }
 
-class Urna {
-    + idUrna : int
-    + votosValidos : int
-    + votosNulos : int
-    + votosBrancos : int
-    + registrarVoto(candidato: Candidatos) : void
+Class Votacao {
+ - diaVotacao : Date
+ - votoPresidente : CandidatoPresidencia
+ - votoGovernador : CandidatoGovernador
+ + Votacao(atributos da classe : constructor)
 }
-
-class GraficoVotos {
-    + gerarGrafico(votos: HashMap<Candidatos, int>) : void
-}
-
 @enduml
