@@ -1,14 +1,14 @@
 <h1><b>ESCOPO DO PROJETO - Urnas (modelo TSE)</b></h1>
 <br>
 
-1.	OBJETIVO
+1.	OBJETIVO <br>
 Desenvolver um sistema seguro e eficiente que atenda os perfis de acesso e permita transações de maneira controlada e auditável. Assim como as urnas eletrônicas, o sistema deve garantir autenticidade, integridade dos dados e proteção de informações dos clientes e usuários, devendo fazer um sistema de cadastro de cada pessoa que irá votar, identificando-o como cidadão e somando seu voto (sem identificação) em uma base de dados;
 
-Perfis de Acesso
+Perfis de Acesso <br>
 •	Cliente: Acesso somente na página de cadastro e à sua votação;
 •	Admin: O administrador será responsável em verificar se todas as pessoas cadastradas realmente votaram, e emitir a nota eleitoral de cada seção, tendo a base de votos em cada seção eleitoral registrada. 
 
-2.	FUNCIONALIDADES
+2.	FUNCIONALIDADES <br>
 Autenticação e Criptografia: Utilize uma autenticação segura com senha criptografada (preferencialmente utilizando um método seguro) e um sistema de controle de sessão robusto para garantir que cada usuário tenha acesso somente às suas funções.
 Cadastro do cidadão: O cidadão votante de cada seção eleitoral deve preencher seus dados em uma ficha (nome, CPF, data de nascimento) para ter o controle de quantas pessoas votaram em cada urna;
 Sistema de votação: 
@@ -23,7 +23,7 @@ Sistema de votação:
 
 •	Para realizar este projeto, será utilizado conceitos da programação orientada a objetos;
 
-3.	Estrutura Necessária
+3.	Estrutura Necessária <br>
 •	Candidatos – Classe pai dos candidatos seguintes;
 
 •	Pessoa – Classe pai de cidadão e candidatos a cargos político
