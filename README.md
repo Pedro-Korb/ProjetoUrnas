@@ -1,7 +1,6 @@
-ESCOPO DO PROJETO
-Urnas (modelo TSE)
-Aluno Pedro Henrique Korb – Pedro.henriquekorb1@gmail.com
-04 de novembro de 2024
+<b>ESCOPO DO PROJETO - Urnas (modelo TSE)</b>
+<br>
+
 1.	OBJETIVO
 Desenvolver um sistema seguro e eficiente que atenda os perfis de acesso e permita transações de maneira controlada e auditável. Assim como as urnas eletrônicas, o sistema deve garantir autenticidade, integridade dos dados e proteção de informações dos clientes e usuários, devendo fazer um sistema de cadastro de cada pessoa que irá votar, identificando-o como cidadão e somando seu voto (sem identificação) em uma base de dados;
 
