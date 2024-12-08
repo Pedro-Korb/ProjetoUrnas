@@ -1,4 +1,4 @@
-<b>ESCOPO DO PROJETO - Urnas (modelo TSE)</b>
+<h1><b>ESCOPO DO PROJETO - Urnas (modelo TSE)</b></h1>
 <br>
 
 1.	OBJETIVO
@@ -24,8 +24,6 @@ Sistema de votação:
 •	Para realizar este projeto, será utilizado conceitos da programação orientada a objetos;
 
 3.	Estrutura Necessária
-
-1.	Classes: 
 •	Candidatos – Classe pai dos candidatos seguintes;
 
 •	Pessoa – Classe pai de cidadão e candidatos a cargos político
