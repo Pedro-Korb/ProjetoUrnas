@@ -2,36 +2,55 @@
 skinparam classAttributeIconSize 0
 skinparam layoutDirection bottomToUp
 
-Pessoa "1" <-- "1" CidadaoVotante
+Pessoa "1" <-- "1" Eleitor
 Pessoa "1" <-- "1" Candidato
-Candidato "1" <-- "1" CandidatoPresidencia
-Candidato "1" <-- "1" CandidatoGovernador
+Candidato "1..*"--*"1" Partido
+Voto "1"--*"1" Candidato
+Voto "1..*" --* "1" Eleitor
+Pessoa "1..*" --* "1" Endereco
+Voto "1"--*"1" Urna
+Votacao "1" --*"1..*" Voto
 
-CidadaoVotante "1" --* "1..*" Votacao : "participa de"
-CandidatoPresidencia "1" --* "1" Partido : "pertence a"
-CandidatoGovernador "1" --* "1" Partido : "pertence a"
-Votacao "1" --* "1" CandidatoPresidencia : "voto para"
-Votacao "1" -right-* "1" CandidatoGovernador : "voto para"
+
+Class Endereco {
+ - pais : String
+ - estado : String
+ - cidade : String
+ - zonaEleitoral : int
+ - sessaoEleitoral : int
+}
+
+Class Voto {
+ # eleitor : Eleitor
+ # candidato : Candidato
+ # urna : Urna
+}
+
+Class Urna {
+ - cidade : String
+ - zonaELeitoral : int
+ - sessaoEleitoral : int
+}
 
 Class Pessoa {
+ # endereco : Endereco
  - nome : String
  - dataNascimento : Date
  - cpf : int
  - sexo : char
 }
 
-Class CidadaoVotante {
- - estado : String
+Class Eleitor{
  - numeroTitulo : int
- - secaoEleitoral : int
- - zonaEleitoral : int
-
  + CidadaoVotante (atributos da classe : constructor)
 }
 
 Class Candidato {
+ # dadosPartido : Partido
+ - cargoPolitico : String
  - numero : int
  - apelido : String
+ - vice : String
 }
 
 Class Partido {
@@ -40,20 +59,7 @@ Class Partido {
  - siglaPartido : String
 }
 
-Class CandidatoPresidencia {
- - vicePresidente : String
- - planoGoverno : String
-}
-
-Class CandidatoGovernador {
- - viceGovernador : String
- - planoGoverno : String
-}
-
 Class Votacao {
- - diaVotacao : Date
- - votoPresidente : CandidatoPresidencia
- - votoGovernador : CandidatoGovernador
- + Votacao(atributos da classe : constructor)
+ # listaVotos : ArrayList<Voto>
 }
 @enduml
